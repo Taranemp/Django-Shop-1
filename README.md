@@ -1,2 +1,2 @@
-# Django-Shop-Maktabkhooneh
- an exmaple of a django application which indicates a shop written in python
+# Django-Shop
+ This is a sample project to show you how to create a ecommerce website, and how to interact with users and payment gateway and also how to manage orders and products.
