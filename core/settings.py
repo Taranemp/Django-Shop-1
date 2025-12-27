@@ -164,5 +164,4 @@ if SHOW_DEBUGGER_TOOLBAR:
     
 # accounts model settings
 AUTH_USER_MODEL = 'accounts.User'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL= '/'
+
