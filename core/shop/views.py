@@ -62,11 +62,18 @@ class ShopProductDetailView(DetailView):
         context["reviews_count"] = {
             f"rate_{rate}": reviews.filter(rate=rate).count() for rate in range(1, 6)
         }
-        context["reviews_avg"] = {
-            f"rate_{rate}": round((reviews.filter(rate=rate).count()/total_reviews_count)*100,2) for rate in range(1, 6)
-        }
+        if total_reviews_count != 0:
+            context["reviews_avg"] = {
+                f"rate_{rate}": round((reviews.filter(rate=rate).count()/total_reviews_count)*100,2) for rate in range(1, 6)
+            }
+        else:
+            context["reviews_avg"] = {f"rate_{rate}": 0 for rate in range(1, 6)}
         return context
 
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        obj.product_images.prefetch_related()
+        return obj
 
 class AddOrRemoveWishlistView(LoginRequiredMixin, View):
 
